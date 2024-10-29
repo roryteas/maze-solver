@@ -17,7 +17,7 @@ class Line:
                 fill=fill_colour,
                 width = 2)
 class Cell:
-    def __init__(self,  x1, y1, x2, y2, window):
+    def __init__(self,  x1, y1, x2, y2, window=None):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -27,6 +27,7 @@ class Cell:
         self._y1 = y1
         self._y2 = y2
         self._window = window
+        self.visited = False
 
     def draw(self):
         top_left = Point(self._x1,self._y1)
@@ -38,6 +39,11 @@ class Cell:
         bottom = Line(bottom_left, bottom_right)
         left = Line(top_left, bottom_left)
         right = Line(top_right, bottom_right)
+
+        self._window.draw_line(top, 'white')
+        self._window.draw_line(bottom, 'white')
+        self._window.draw_line(left, 'white')
+        self._window.draw_line(right, 'white')
         if self.has_top_wall:
             self._window.draw_line(top, 'black')
         if self.has_bottom_wall:
