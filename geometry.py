@@ -29,6 +29,9 @@ class Cell:
         self._window = window
         self.visited = False
 
+    def __repr__(self):
+        return f"walls: left:{self.has_left_wall}, right:{self.has_right_wall}, top:{self.has_top_wall}, bottom:{self.has_bottom_wall}"
+
     def draw(self):
         top_left = Point(self._x1,self._y1)
         top_right = Point(self._x2, self._y1)
